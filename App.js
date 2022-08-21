@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Dashboard from './src/Containers/Dashboard';
 import Cart from './src/Containers/Cart';
-import { Provider } from 'react-redux';
+import Login from './src/Containers/Login';
 
 
 const Stack = createNativeStackNavigator();
@@ -20,6 +20,7 @@ const App= () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Products" component={Dashboard} />
         <Stack.Screen name="Cart" component={Cart} />
       </Stack.Navigator>
