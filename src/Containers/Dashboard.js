@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Button, FlatList } from 'react-native'
 import { getItem, getItems } from '../Services/Items'
 import { ListItemCard } from "../Components/ListItemCard";
+import { findItemWithSku } from '../Helper/helper'
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -29,6 +30,7 @@ class Dashboard extends React.Component {
     }
 
     onPressListItem = (item) => {
+        console.log("onPressListItem")
         if(!item.quantity) {
             // console.log("onPress list item: ", item)
             let tempCart = this.state.cart
@@ -36,7 +38,7 @@ class Dashboard extends React.Component {
             tempCart.push(item)
             this.setState({cart: tempCart})
         } else {
-            let index2 = this.findItemWithSku(this.state.cart, item.sku)
+            let index2 = findItemWithSku(this.state.cart, item.sku)
             let tempCart = this.state.cart
             tempCart[index2].quantity++
             this.setState({cart: tempCart})
@@ -45,36 +47,12 @@ class Dashboard extends React.Component {
         }
     }
 
-    findItemWithSku = (list, sku ) => {
-        let index = 0
-        list.map((obj) => {
-            if(obj.sku == sku) {
-                console.log("if condition: ", index)
-                return index;
-            } else {
-                console.log("else condition: ", index)
-                index++
-            }
-        })
-        //  return list.every(obj => {
-        //     if(obj.sku == sku) {
-        //         return index;
-        //     } else { 
-        //         index++
-        //     }
-        // })
 
-        if(index != list.length) {
-            return index
-        }
 
-        return -1
-
-    }
 
     onPressListItemRemoveListItem = (sku) => {
         console.log("onPressRemoveListItem: ", sku)
-        let index2 = this.findItemWithSku(this.state.cart, sku)
+        let index2 = findItemWithSku(this.state.cart, sku)
         console.log("index: ", index2)
         let tempCart = this.state.cart
         tempCart[index2].quantity--
@@ -89,6 +67,8 @@ class Dashboard extends React.Component {
 
     renderItem = ({item}) => {
         console.log("item: ", item.sku)
+        let specialPrice = item.custom_attributes.find(o => o.attribute_code === 'special_price');
+        console.log("specialPrice: ", specialPrice)
         return(
             <ListItemCard
                 title={item.name}
@@ -97,7 +77,9 @@ class Dashboard extends React.Component {
                 onPressRemove={this.onPressListItemRemoveListItem}
                 price={item.price}
                 quantity={item.quantity}
-                sku = {item.sku}/>
+                sku = {item.sku}
+                specialPrice={specialPrice?.value}
+                />
         )
     }
 
