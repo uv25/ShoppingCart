@@ -114,6 +114,10 @@ class Dashboard extends React.Component {
                     data={this.state.dataArray}
                     renderItem={this.renderItem}
                     keyExtractor={(item, index) => index}/>
+                                        <Button
+        title="Checkout"
+        onPress={() =>  this.props.navigation.navigate('Cart', { cartData: this.state.cart})}
+      />
                 
             </View>
         )
