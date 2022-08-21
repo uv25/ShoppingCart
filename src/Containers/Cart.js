@@ -50,6 +50,7 @@ class CheckoutItems extends Component {
 
     renderItem = ({item}) => {
         //console.log("cart item: ", item.sku)
+        let specialPrice = item.custom_attributes.find(o => o.attribute_code === 'special_price');
         return(
             <ListItemCard
                 title={item.name}
@@ -58,7 +59,8 @@ class CheckoutItems extends Component {
                 onPressRemove={this.onPressListItemRemoveListItem}
                 price={item.price}
                 quantity={item.quantity}
-                sku = {item.sku}/>
+                sku = {item.sku}
+                specialPrice = {specialPrice?.value}/>
         )
     }
 
