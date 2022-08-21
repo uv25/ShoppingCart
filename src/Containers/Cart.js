@@ -44,7 +44,6 @@ class CheckoutItems extends Component {
     }
 
     renderItem = ({item}) => {
-        //console.log("cart item: ", item.sku)
         let specialPrice = item.custom_attributes.find(o => o.attribute_code === 'special_price');
         specialPrice = Math.round(specialPrice?.value*100) /100
         return(

@@ -27,10 +27,10 @@ class Login extends React.Component {
           {token, parameters: PROFILE_REQUEST_PARAMS},
           (error, result) => {
             if (error) {
-              console.log('login info has error: ' + error);
+              //console.log('login info has error: ' + error);
             } else {
               this.setState({userInfo: result});
-              console.log('result:', result);
+              //console.log('result:', result);
             }
           },
         );
@@ -43,18 +43,18 @@ class Login extends React.Component {
         <LoginButton
           onLoginFinished={(error, result) => {
             if (error) {
-              console.log('login has error: ' + result.error);
+              //console.log('login has error: ' + result.error);
               this.props.navigation.navigate('Products')
             } else if (result.isCancelled) {
-              console.log('login is cancelled.');
+              //console.log('login is cancelled.');
             } else {
               AccessToken.getCurrentAccessToken().then(data => {
                 const accessToken = data.accessToken.toString();
                 this.getInfoFromToken(accessToken);
-                console.log("login success")
+                //console.log("login success")
                 this.props.navigation.navigate('Products')
               }).catch((error) => {
-                  console.log("error")
+                  //console.log("error")
               });
             }
           }}
