@@ -17,7 +17,7 @@ export const ListItemCard = ({title, imageEndUrl, onPress, onPressRemove, price,
                 <Text style={styles.highlightText}>{`₹ ${price}`}</Text>
             </View>
 
-            <View style = {{marginTop: 7, flexDirection: 'row', justifyContent: 'center'}}>
+            <View style = {{marginTop: 40, flexDirection: 'row', justifyContent: 'center'}}>
                 {quantity ? 
                 <TouchableOpacity onPress={()=>onPressRemove(sku)}>
                     {<FA5 name="minus"  size={20} solid/>}
@@ -29,7 +29,7 @@ export const ListItemCard = ({title, imageEndUrl, onPress, onPressRemove, price,
                 </TouchableOpacity>
 
                 {quantity ? 
-                <TouchableOpacity onPress={onPress}>
+                <TouchableOpacity onPress={onPress} style = {{flexDirection: 'row'}}>
                     {<FA5 name="plus"  size={20} solid/>}
                 </TouchableOpacity> 
                 : null}
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     imageStyle: {
-        height: 150,
+        height: 130,
         width: 90, 
         resizeMode: "contain",
         marginVertical: 10,
@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
         // borderColor: 'green', borderWidth: 3,
     },
     cardDescriptionStyle: {
-        marginVertical: 20
+        marginVertical: 20,
+        marginTop:30
     },
     textStyle: {
         // textAlign: "center",
