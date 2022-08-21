@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import MC from 'react-native-vector-icons/MaterialCommunityIcons'
+import FA5 from 'react-native-vector-icons/FontAwesome5'
 
 const imageBaseUrl = "https://uat.grandiose.ae/media/catalog/product"
 
@@ -16,12 +17,22 @@ export const ListItemCard = ({title, imageEndUrl, onPress, onPressRemove, price,
                 <Text style={styles.highlightText}>{`₹ ${price}`}</Text>
             </View>
 
-            <View style = {{marginTop: 7}}>
-                <TouchableOpacity onPress={quantity ? ()=>onPressRemove(sku) : onPress} style = {{flexDirection: 'row'}}>
-                    {/* <FA5 name="minus"  size={20} solid/> */}
-                    {quantity ? <MC name="cart-minus"  size={20} solid/> : <MC name="cart-outline"  size={24} solid/>}
-                    {/* <FA5 name="cart-minus"  size={20} solid/> */}
+            <View style = {{marginTop: 7, flexDirection: 'row', justifyContent: 'center'}}>
+                {quantity ? 
+                <TouchableOpacity onPress={()=>onPressRemove(sku)}>
+                    {<FA5 name="minus"  size={20} solid/>}
+                </TouchableOpacity> 
+                : null}
+
+                <TouchableOpacity onPress={quantity ? ()=>{} : onPress} style = {{flexDirection: 'row'}}>
+                    {<MC name="cart-outline"  size={24} solid/>}
                 </TouchableOpacity>
+
+                {quantity ? 
+                <TouchableOpacity onPress={onPress}>
+                    {<FA5 name="plus"  size={20} solid/>}
+                </TouchableOpacity> 
+                : null}
             </View>
 
         </View>
@@ -36,7 +47,8 @@ const styles = StyleSheet.create({
         // height: 80,
         borderRadius: 10,
         // elevation: 1,
-        borderColor: '#e6e6e6', borderWidth: 1
+        borderColor: '#e6e6e6', borderWidth: 1,
+        backgroundColor: 'white'
     },
     imageStyle: {
         height: 150,

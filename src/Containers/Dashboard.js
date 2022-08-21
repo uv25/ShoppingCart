@@ -25,11 +25,18 @@ class Dashboard extends React.Component {
 
     onPressListItem = (item) => {
         if(!item.quantity) {
-            console.log("onPress list item: ", item)
+            // console.log("onPress list item: ", item)
             let tempCart = this.state.cart
             item.quantity++
             tempCart.push(item)
             this.setState({cart: tempCart})
+        } else {
+            let index2 = this.findItemWithSku(this.state.cart, item.sku)
+            let tempCart = this.state.cart
+            tempCart[index2].quantity++
+            this.setState({cart: tempCart})
+
+            console.log("qty: ", this.state.cart[index2].quantity)
         }
     }
 
@@ -66,7 +73,11 @@ class Dashboard extends React.Component {
         console.log("index: ", index2)
         let tempCart = this.state.cart
         tempCart[index2].quantity--
-        tempCart.splice(index2)
+        console.log("quantity: ", tempCart[index2].quantity)
+
+        if(tempCart[index2].quantity == 0) {
+            tempCart.splice(index2)
+        }
         this.setState({cart: tempCart})
 
     }
