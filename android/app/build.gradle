@@ -225,6 +225,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+         release {
+      storeFile file('PentAirkey.keystore')
+      storePassword 'Pentair@123'
+      keyAlias 'PentAirkey'
+      keyPassword 'Pentair@123'
+    }
     }
     buildTypes {
         debug {
