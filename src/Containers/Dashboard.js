@@ -22,7 +22,6 @@ class Dashboard extends React.Component {
 
             getItem(6291030200049).then(response2 => {
                 responseArray.push({ ...response2, quantity: 0})
-                console.log("response2: ", this.state.dataArray)
                 this.setState({dataArray: responseArray})
             })
             
@@ -30,9 +29,7 @@ class Dashboard extends React.Component {
     }
 
     onPressListItem = (item) => {
-        console.log("onPressListItem")
         if(!item.quantity) {
-            // console.log("onPress list item: ", item)
             let tempCart = this.state.cart
             item.quantity++
             tempCart.push(item)
@@ -42,8 +39,6 @@ class Dashboard extends React.Component {
             let tempCart = this.state.cart
             tempCart[index2].quantity++
             this.setState({cart: tempCart})
-
-            console.log("qty: ", this.state.cart[index2].quantity)
         }
     }
 
@@ -51,14 +46,10 @@ class Dashboard extends React.Component {
 
 
     onPressListItemRemoveListItem = (sku) => {
-        console.log("onPressRemoveListItem: ", sku)
         let index2 = findItemWithSku(this.state.cart, sku)
-        console.log("index: ", index2)
         let tempCart = this.state.cart
         tempCart[index2].quantity--
-        console.log("quantity: ", tempCart[index2].quantity)
-
-        if(tempCart[index2].quantity == 0) {
+    if(tempCart[index2].quantity == 0) {
             tempCart.splice(index2, 1)
         }
         this.setState({cart: tempCart})
@@ -66,9 +57,7 @@ class Dashboard extends React.Component {
     }
 
     renderItem = ({item}) => {
-        console.log("item: ", item.sku)
         let specialPrice = item.custom_attributes.find(o => o.attribute_code === 'special_price');
-        console.log("specialPrice: ", specialPrice)
         return(
             <ListItemCard
                 title={item.name}

@@ -18,14 +18,10 @@ class CheckoutItems extends Component {
     }
     
     onPressListItemRemoveListItem = (sku) => {
-        console.log("onPressRemoveListItem: ", sku)
         let index2 = findItemWithSku(this.state.cart, sku)
-        console.log("index: ", index2)
         let tempCart = this.state.cart
         tempCart[index2].quantity--
-        console.log("quantity: ", tempCart[index2].quantity)
-
-        if(tempCart[index2].quantity == 0) {
+       if(tempCart[index2].quantity == 0) {
             tempCart.splice(index2, 1)
         }
         this.setState({cart: tempCart})
@@ -34,7 +30,6 @@ class CheckoutItems extends Component {
 
     onPressListItem = (item) => {
         if(!item.quantity) {
-            // console.log("onPress list item: ", item)
             let tempCart = this.state.cart
             item.quantity++
             tempCart.push(item)
@@ -67,8 +62,6 @@ class CheckoutItems extends Component {
   render() {
     const { cartItems, navigation } = this.props;
     var {cart} = this.state
-    
-    console.log("cart data: ", cart)
     return (
       <View style={styles.container}>
                 
