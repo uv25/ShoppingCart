@@ -26,10 +26,10 @@ const axiosInstance = axios.create({
     }
   });
 
-export const getItem = async () => new Promise(async (resolve, reject) => {
+export const getItem = async (sku) => new Promise(async (resolve, reject) => {
     console.log("Inside getItem")
     axios.get(
-        'https://uat.grandiose.ae/rest/V1/products/6291030200070',
+        'https://uat.grandiose.ae/rest/V1/products/'+sku,
         config)
     .then((response) => {
     resolve(response.data)

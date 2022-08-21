@@ -15,11 +15,16 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        getItem().then(response => {
+        getItem(6291030200070).then(response => {
             this.setState({data: response})
             let responseArray = [response].map(obj => ({ ...obj, quantity: 0 }))
-            this.setState({dataArray: responseArray})
-            console.log("response: ", this.state.dataArray)
+
+            getItem(6291030200049).then(response2 => {
+                responseArray.push({ ...response2, quantity: 0})
+                console.log("response2: ", this.state.dataArray)
+                this.setState({dataArray: responseArray})
+            })
+            
         })
     }
 
