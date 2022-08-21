@@ -7,6 +7,7 @@ import {
   Image
 } from 'react-native';
 import { ListItemCard } from "../Components/ListItemCard";
+import { findItemWithSku } from '../Helper/helper'
 class CheckoutItems extends Component {  
     constructor(props) {
         super(props)
@@ -15,35 +16,10 @@ class CheckoutItems extends Component {
             cart: this.props.route.params.cartData
         }
     }
-    findItemWithSku = (list, sku ) => {
-        let index = 0
-        list.map((obj) => {
-            if(obj.sku == sku) {
-                console.log("if condition: ", index)
-                return index;
-            } else {
-                console.log("else condition: ", index)
-                index++
-            }
-        })
-        //  return list.every(obj => {
-        //     if(obj.sku == sku) {
-        //         return index;
-        //     } else { 
-        //         index++
-        //     }
-        // })
-
-        if(index != list.length) {
-            return index
-        }
-
-        return -1
-
-    }
+    
     onPressListItemRemoveListItem = (sku) => {
         console.log("onPressRemoveListItem: ", sku)
-        let index2 = this.findItemWithSku(this.state.cart, sku)
+        let index2 = findItemWithSku(this.state.cart, sku)
         console.log("index: ", index2)
         let tempCart = this.state.cart
         tempCart[index2].quantity--
@@ -64,7 +40,7 @@ class CheckoutItems extends Component {
             tempCart.push(item)
             this.setState({cart: tempCart})
         } else {
-            let index2 = this.findItemWithSku(this.state.cart, item.sku)
+            let index2 = findItemWithSku(this.state.cart, item.sku)
             let tempCart = this.state.cart
             tempCart[index2].quantity++
             this.setState({cart: tempCart})

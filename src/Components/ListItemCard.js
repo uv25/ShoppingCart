@@ -5,7 +5,7 @@ import FA5 from 'react-native-vector-icons/FontAwesome5'
 
 const imageBaseUrl = "https://uat.grandiose.ae/media/catalog/product"
 
-export const ListItemCard = ({title, imageEndUrl, onPress, onPressRemove, price, quantity, sku}) => {
+export const ListItemCard = ({title, imageEndUrl, onPress, onPressRemove, price, quantity, sku, specialPrice}) => {
     return(
         <View style={styles.cardContainer}>
             <Image
@@ -14,7 +14,11 @@ export const ListItemCard = ({title, imageEndUrl, onPress, onPressRemove, price,
             
             <View style={styles.cardDescriptionStyle}>
                 <Text style={styles.titleTextStyle}>{title}</Text>
-                <Text style={styles.highlightText}>{`₹ ${price}`}</Text>
+                <View style ={{flexDirection: 'row'}}>
+                    {specialPrice ? 
+                    <Text style={styles.highlightText}>{`₹ ${specialPrice}`}</Text> : null}
+                    <Text style={specialPrice ? styles.strikeThroughHighlightText : styles.highlightText}>{`₹ ${price}`}</Text>
+                </View>
             </View>
 
             <View style = {{marginTop: 40, flexDirection: 'row', justifyContent: 'center'}}>
@@ -75,8 +79,17 @@ const styles = StyleSheet.create({
     },
     highlightText: {
         marginHorizontal: 20,
-        width: 170,
-        fontSize: 20,
+        // width: 170,
+        fontSize: 18,
         fontWeight: "bold"
+    },
+    strikeThroughHighlightText: {
+        marginLeft: 8,
+        // width: 170,
+        fontSize: 18,
+        fontWeight: "bold",
+        textDecorationLine: 'line-through',
+        textDecorationStyle: 'red',
+        color: 'red'
     }
 })
