@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     titleTextStyle: {
         marginHorizontal: 20,
-        width: 170,
+        width: 140,
         fontSize: 17,
         fontWeight: "bold"
     },
