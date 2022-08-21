@@ -103,14 +103,14 @@ class Dashboard extends React.Component {
 
     render() {
         return(
-            <View style = {{flex: 1}}>
+            <View style = {{flex: 1, backgroundColor: 'white'}}>
 
                 {/* <ListItemCard
                     title={this.state.data?.name}
                     imageEndUrl={this.state.data?.custom_attributes[0].value}/> */}
 
                 <FlatList
-                    style={{borderColor: "blue", borderWidth: 1, flex: 1}}
+                    style={{ backgroundColor: 'white', flex: 1}}
                     data={this.state.dataArray}
                     renderItem={this.renderItem}
                     keyExtractor={(item, index) => index}/>

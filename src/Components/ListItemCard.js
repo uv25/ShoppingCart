@@ -70,13 +70,13 @@ const styles = StyleSheet.create({
     titleTextStyle: {
         marginHorizontal: 20,
         width: 170,
-        fontSize: 15,
+        fontSize: 17,
         fontWeight: "bold"
     },
     highlightText: {
         marginHorizontal: 20,
         width: 170,
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: "bold"
     }
 })

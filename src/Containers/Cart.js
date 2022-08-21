@@ -4,7 +4,7 @@ import {
     Text,
     FlatList,
   StyleSheet,
-  ScrollView
+  Image
 } from 'react-native';
 import { ListItemCard } from "../Components/ListItemCard";
 class CheckoutItems extends Component {  
@@ -94,8 +94,10 @@ class CheckoutItems extends Component {
     return (
       <View style={styles.container}>
                 
-                    <View style={styles.annouc}>
-                        <Text style={styles.anncText}>Please confirm your order and checkout your cart.</Text>
+                    <View style={ cartData.length ? styles.annouc : styles.info}>
+                    {cartData.length ?  <Text style={styles.anncText}>Please confirm your order and checkout your cart.</Text> : <Image
+               source={require('../Images/emptyCart.png')}
+                style={styles.imageStyle}/>}
                     </View>
                     <View style={styles.ckitems}>
                     <FlatList
@@ -118,10 +120,23 @@ const styles = StyleSheet.create({
   ckitems: {
     flex:0.8
   },
+  imageStyle: {
+    width:350,
+    height:500,
+    resizeMode:'stretch'
+  },
     annouc:{
       padding: 12,
       borderRadius: 5,
       backgroundColor: '#34495e90',
+      margin: 10,
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    info:{
+      padding: 12,
+      borderRadius: 5,
+      backgroundColor: 'white',
       margin: 10,
       justifyContent: 'center',
       alignItems: 'center'
