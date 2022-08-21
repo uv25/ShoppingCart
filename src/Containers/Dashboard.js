@@ -68,6 +68,7 @@ class Dashboard extends React.Component {
     renderItem = ({item}) => {
         console.log("item: ", item.sku)
         let specialPrice = item.custom_attributes.find(o => o.attribute_code === 'special_price');
+        specialPrice = Math.round(specialPrice?.value*100) /100
         console.log("specialPrice: ", specialPrice)
         return(
             <ListItemCard
@@ -78,7 +79,7 @@ class Dashboard extends React.Component {
                 price={item.price}
                 quantity={item.quantity}
                 sku = {item.sku}
-                specialPrice={specialPrice?.value}
+                specialPrice={specialPrice}
                 />
         )
     }
