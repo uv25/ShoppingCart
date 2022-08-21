@@ -45,9 +45,9 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         margin: 10,
         // height: 80,
-        borderRadius: 10,
+        borderRadius: 20,
         // elevation: 1,
-        borderColor: '#e6e6e6', borderWidth: 1,
+        borderColor: '#e6e6e6', borderWidth: 2,
         backgroundColor: 'white'
     },
     imageStyle: {

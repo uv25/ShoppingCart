@@ -112,13 +112,15 @@ class CheckoutItems extends Component {
 }
 const styles = StyleSheet.create({
   container:{
-    flex: 1
+    flex: 1,
+    backgroundColor:'white'
   },
   custForm: {
     flex: 1
   },
   ckitems: {
-    flex:0.8
+    flex:0.8,
+    backgroundColor:'white'
   },
   imageStyle: {
     width:350,
