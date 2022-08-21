@@ -26,7 +26,7 @@ class CheckoutItems extends Component {
         console.log("quantity: ", tempCart[index2].quantity)
 
         if(tempCart[index2].quantity == 0) {
-            tempCart.splice(index2)
+            tempCart.splice(index2, 1)
         }
         this.setState({cart: tempCart})
 
@@ -66,21 +66,21 @@ class CheckoutItems extends Component {
 
   render() {
     const { cartItems, navigation } = this.props;
-    var cartData = this.props.route.params.cartData
+    var {cart} = this.state
     
-    console.log("cart data: ", cartData)
+    console.log("cart data: ", cart)
     return (
       <View style={styles.container}>
                 
-                    <View style={ cartData.length ? styles.annouc : styles.info}>
-                    {cartData.length ?  <Text style={styles.anncText}>Please confirm your order and checkout your cart.</Text> : <Image
+                    <View style={ cart.length ? styles.annouc : styles.info}>
+                    {cart.length ?  <Text style={styles.anncText}>Please confirm your order and checkout your cart.</Text> : <Image
                source={require('../Images/emptyCart.png')}
                 style={styles.imageStyle}/>}
                     </View>
                     <View style={styles.ckitems}>
                     <FlatList
                     style={{ flex: 1}}
-                    data={cartData}
+                    data={cart}
                     renderItem={this.renderItem}
                     keyExtractor={(item, index) => index}/>  
                     </View>
