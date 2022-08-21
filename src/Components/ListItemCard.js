@@ -25,7 +25,7 @@ export const ListItemCard = ({title, imageEndUrl, onPress, onPressRemove, price,
                 : null}
 
                 <TouchableOpacity onPress={quantity ? ()=>{} : onPress} style = {{flexDirection: 'row'}}>
-                    {<MC name="cart-outline"  size={24} solid/>}
+                    {quantity ? <Text>{quantity}</Text> : <MC name="cart-outline"  size={24} solid/>}
                 </TouchableOpacity>
 
                 {quantity ? 
