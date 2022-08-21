@@ -59,7 +59,7 @@ class Dashboard extends React.Component {
         console.log("quantity: ", tempCart[index2].quantity)
 
         if(tempCart[index2].quantity == 0) {
-            tempCart.splice(index2)
+            tempCart.splice(index2, 1)
         }
         this.setState({cart: tempCart})
 
